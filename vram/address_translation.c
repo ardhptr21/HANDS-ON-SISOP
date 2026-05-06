@@ -7,8 +7,8 @@
 
 /*
  * Page table entry:
- *   frame_number = nomor frame fisik (-1 jika tidak ada di RAM)
- *   valid        = 1 jika halaman ada di RAM, 0 jika tidak
+ *   frame_number = frame number fisik (-1 jika tidak ada di RAM)
+ *   valid        = 1 jika page ada di RAM, 0 jika tidak
  */
 typedef struct {
     int frame_number;
@@ -23,7 +23,7 @@ void init_page_table() {
         page_table[i].frame_number = -1;
         page_table[i].valid        = 0;
     }
-    /* Simulasi: beberapa halaman sudah dimuat ke RAM */
+    /* simulasi ketika beberapa page sudah dimuat ke RAM */
     page_table[0].frame_number = 3;  page_table[0].valid = 1;
     page_table[2].frame_number = 1;  page_table[2].valid = 1;
     page_table[4].frame_number = 0;  page_table[4].valid = 1;
@@ -46,7 +46,7 @@ int translate(unsigned int virtual_addr) {
     }
 
     if (!page_table[page_num].valid) {
-        printf("  STATUS: PAGE FAULT — halaman %d tidak ada di RAM\n", page_num);
+        printf("  STATUS: PAGE FAULT - page %d tidak ada di RAM\n", page_num);
         return -1;
     }
 

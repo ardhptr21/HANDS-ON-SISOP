@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
+char *gets(char *s); // Bypass error pada GCC modern
+
+
 void secret_function() {
     printf("[!] KAMU BERHASIL MASUK KE FUNGSI RAHASIA (ARBITRARY CODE EXECUTION)!\n");
 }
